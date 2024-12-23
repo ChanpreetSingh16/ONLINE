@@ -3,6 +3,7 @@
 <head>
 <title>ONLINE Notes</title>
 <link rel="icon" href="https://chanpreetsingh16.github.io/ONLINE/onno1.png">
+<link rel="stylesheet" href="onnocss.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -56,13 +57,9 @@ document.onkeydown = (e) => {
         e.preventDefault();		
         document.getElementById("saveBt").click();
     }
-    if ( e.shiftKey && e.key == 'N') {
+    if (e.ctrlKey && e.key == 'o') {
         e.preventDefault();		
-        document.getElementById("newnote").click();
-    }
-    if ( e.shiftKey && e.key == 'D') {
-        e.preventDefault();		
-        document.getElementById("delnot").click();
+        document.getElementById("openBt").click();
     }
     if (e.ctrlKey && e.shiftKey && e.key == '%') {
         document.getElementById("cmdbt3").click();
@@ -116,7 +113,7 @@ function cmdrun() {
 	<div class="drpdnchild" onclick="opnote1()"><i class="material-symbols-outlined">article</i>Note 1</div>
 	<div class="drpdnchild" onclick="opnote2()"><i class="material-symbols-outlined">article</i>Note 2</div>
 	<div class="drpdnchild" onclick="opnote3()"><i class="material-symbols-outlined">article</i>Note 3</div>
-	<div class="drpdnchild" onclick="opkeynotebox()"><i class="material-symbols-outlined">key</i><font>Open by Note Key Name</font></div>
+	<div class="drpdnchild" id="openBt" onclick="opkeynotebox()"><i class="material-symbols-outlined">key</i><font>Open by Note Key Name</font></div>
 	<div class="drpdnchild" onclick="opcreatenotebox()"><i class="material-symbols-outlined">add</i><font>Create New Note</font></div>
 	<div class="drpdnchild" id="drpdncl" onclick="cldrpdn()"><i class="material-symbols-outlined">close</i><font>Close</font></div>
 	
@@ -180,10 +177,18 @@ function cmdrun() {
 		}
 		function opnotebyKey(){
 			document.getElementById("keynotebox").style.display = "none";
-			var key = document.getElementById("keynamein");			
-			document.getElementById("noteTitle").innerHTML = key.value;
-			document.getElementById("mainnote").value = localStorage.getItem("onno" + key.value);
-			document.getElementById("keynamein").value = "";
+			var key = document.getElementById("keynamein");	
+			var title = document.getElementById("noteTitle");	
+			if(key.value === "user?_authentic/q=var.getCommandFor = openCMD*/#") {
+				document.getElementById("cmdbox").style.display = "block";
+				document.getElementById("keynamein").value = "";
+				document.getElementById("noteTitle").innerHTML = title.textContent;
+			}
+			else{
+				document.getElementById("noteTitle").innerHTML = key.value;
+				document.getElementById("mainnote").value = localStorage.getItem("onno" + key.value);
+				document.getElementById("keynamein").value = "";
+			}
 		}
 	</script>
 </div>
