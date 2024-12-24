@@ -21,6 +21,12 @@ function main() {
 		document.body.classList.toggle("phone");
 		document.getElementById("brandfont").style.display = "none";
 		document.getElementById("navcendiv").style.maxWidth = "calc(100% - 165px)";
+		document.getElementById("navcendiv").style.whiteSpace = "nowrap";
+		document.getElementById("navcendiv").style.overflow = "hidden";
+		document.getElementById("navcendiv").style.textOverflow = "ellipsis";
+		document.getElementById("titledropdni").style.float = "right";
+		document.getElementById("titledropdni").style.marginLeft = "7px";
+		document.getElementById("titledropdni").style.marginRight = "10px";
 	}
 	else {}
 }
@@ -193,7 +199,7 @@ function cmdrun() {
 	</script>
 </div>
 
-<button id="navrhtbt" onclick="()" title="More Actions"><i class="material-symbols-outlined">apps</i></button>
+<button id="navrhtbt" onclick="openMoreActions()" title="More Actions"><i class="material-symbols-outlined">apps</i></button>
 </div>
 
 <textarea class="mainnote" id="mainnote" placeholder="Write Here!" onclick="cldrpdn()" oncontextmenu="cldrpdn()" autofocus></textarea>
@@ -310,6 +316,31 @@ function clearNote() {
 </script>
 </div>
 
+<div id="morediv" class="morediv">
+<script>
+function openMoreActions() {
+	document.getElementById("morediv").style.display = "block";
+}
+function closemorediv() {
+	document.getElementById("morediv").style.display = "none";
+}
+</script>
+<div id="morenav"><button onclick="closemorediv()"><i class="material-symbols-outlined">arrow_back</i></button>&nbsp;&nbsp;More Actions</div>
+
+<div id="container">
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#036;">key</i><font>Open Note by Key Name</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#f03;">add</i><font>Create New Note</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#93f;">save</i><font>Save Note by Key Name</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#3c3;">delete</i><font>Delete Note by Key Name</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#063;">delete_sweep</i><font>Delete Multiple Notes at once</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#f60;">change_circle</i><font>Rename Key</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#333;">history</i><font>Key History</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#06f;">encrypted</i><font>Locker Notes</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#096;">person</i><font>Contact Developer</font></div>
+<div id="child" onclick="()"><i class="material-symbols-outlined" style="color:#039;">info</i><font>About</font></div>
+</div>
+</div>
+
 
 <div id="cmdbox">
 <input type="text" id="commandinput" placeholder="Enter Command Code" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false"><br>
@@ -318,6 +349,7 @@ function clearNote() {
 <button class="" onclick="opcmdbox()" id="cmdbt3" style="display:none;">Open</button><br>
 <div id="cmdresult"></div>
 </div>
+
 </div>
 </body>
 <style>
@@ -977,9 +1009,108 @@ function clearNote() {
 	border:2px solid var(--b6);
 	background:var(--b6);
 }
+.morediv{
+	display:none;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:12;
+	height:100%;
+	width:100%;
+	background:var(--b1);
+	animation-name:fade-in;
+	animation-duration:0.5s;
+	animation-iteration-count:1;
+	animation-timming-function:linear;
+}
+.morediv ::-webkit-scrollbar{
+	width:0px;
+	height:0px;
+}
+#morenav{
+	/*border:1px solid#000;*/
+	width:100%;
+	height:50px;
+	line-height:50px;
+	font-family:quicksand;
+	font-size:17px;
+	font-weight:500;
+	cursor:context-menu;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+}
+#morenav button{
+	height:40px;
+	width:40px;
+	margin:5px 0 0 5px;
+	outline:none;
+	border-radius:50%;
+	border:none;
+	background:transparent;
+	color:var(--c1);
+	float:left;
+}
+#morenav button:hover{
+	background:var(--b4);
+}
+#morenav button:active{
+	background:var(--b3);
+}
+#morenav button i{
+	font-size:24px;
+	line-height:38px;
+}
+.morediv #container{
+	/*border:1px solid#000;*/
+	height:calc(100% - 70px);
+	width:100%;
+	margin-top:20px;
+	border-radius:15px;
+	background:var(--b3);
+	overflow:hidden;
+	overflow-y:auto;
+}
+.morediv #container #child{
+	/*border:1px solid#000;*/
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	width:100%;
+	height:50px;
+	float:left;
+}
+.morediv #container #child:hover{
+	background:var(--b7);
+}
+.morediv #container #child:active{
+	background:var(--b6);
+}
+.morediv #container #child font{
+	float:left;
+	line-height:50px;
+	font-size:16px;
+	font-weight:550;
+	font-family:quicksand;
+	margin-left:10px;
+}
+.morediv #container #child i{
+	float:left;
+	line-height:50px;
+	font-size:28px;
+	margin-left:10px;
+}
 
 
-
+@media only screen and (max-height : 330px) {
+	 .drpdn{
+		 height:95px;
+		 overflow:hidden;
+		 overflow-y:auto;
+		 width:224px;
+		 border-radius:7px 4px 4px 7px;
+	 }
+}
 
 
 
