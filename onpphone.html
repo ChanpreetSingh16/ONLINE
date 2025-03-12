@@ -1,0 +1,540 @@
+<!doctype html>
+<html>
+<head>
+<title>ONLINE Beta</title>
+<link rel="icon" href="https://chanpreetsingh16.github.io/ONLINE/image4.ico">
+<!--<link rel="stylesheet" href="online%20p.css">-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Quicksand:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+</head>
+<body onload="load()">
+<script>
+function load() {	
+	if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {		
+	}
+	else{
+		if(localStorage.getItem("onpdevmode") === "on"){
+			document.getElementById("devmode").style.display = "block";
+			document.getElementById("container").style.width = "335px";
+			document.getElementById("container").style.left = "50%";
+			document.getElementById("container").style.transform = "translate(-50%, 0)";
+			
+		}		
+		else{
+			document.getElementById("devwarn").style.display = "block";
+			document.getElementById("devmode").style.display = "none";
+			document.getElementById("container").style.display = "none";
+			document.getElementById("container").style.width = "100%";
+			document.getElementById("container").style.left = "0";
+			document.getElementById("container").style.transform = "translate(0, 0)";
+		}
+	}
+	batload();
+}
+function dev() {
+		if(localStorage.getItem("onpdevmode") === "on") {
+			document.getElementById("devwarn").style.display = "block";
+			document.getElementById("devmode").style.display = "none";
+			document.getElementById("container").style.display = "none";
+			localStorage.removeItem("onpdevmode");
+			document.getElementById("container").style.width = "100%";
+			document.getElementById("container").style.left = "0";
+			document.getElementById("container").style.transform = "translate(0, 0)";
+		}
+		else{
+			document.getElementById("devwarn").style.display = "none";
+			document.getElementById("devmode").style.display = "block";
+			document.getElementById("container").style.display = "block";
+			localStorage.setItem("onpdevmode", "on");
+			document.getElementById("container").style.width = "335px";
+			document.getElementById("container").style.left = "50%";
+			document.getElementById("container").style.transform = "translate(-50%, 0)";
+		}
+}
+function batload(){
+	navigator.getBattery().then(function(battery) {
+	battery.addEventListener('levelchange', function() {    
+		// Do stuff when the level changes, you can get it
+		// from battery.level
+		//document.write((battery.level*100)+"%");
+		document.getElementById("bat-txt").innerHTML = Math.round((battery.level*100));
+		var p = (battery.level*100);
+		var p2 = (battery.level*100)/100;
+		var w = p2*24;
+		var w2 = Math.round(w);
+		if(p > 22){
+				document.getElementById("bat-lev").style.width = w2 + "px";
+				document.getElementById("bat-lev").style.float = "left";
+				document.getElementById("bat-lev").style.background = "var(--scol1)";
+				document.getElementById("bat-main").style.background = "var(--scol2)";
+				
+			if(w2 === 20){
+				document.getElementById("bat-lev").style.borderRadius = "7px 2px 2px 7px";
+			}
+			else if(w2 === 21){
+				document.getElementById("bat-lev").style.borderRadius = "7px 4px 4px 7px";
+			}
+			else if(w2 === 22){
+				document.getElementById("bat-lev").style.borderRadius = "7px 5px 5px 7px";
+			}
+			else if(w2 === 23){
+				document.getElementById("bat-lev").style.borderRadius = "7px 6px 6px 7px";
+			}
+			else if(w2 === 24){
+				document.getElementById("bat-lev").style.borderRadius = "7px";
+			}
+			else{
+				document.getElementById("bat-lev").style.borderRadius = "7px 0 0 7px";
+			}
+		}
+		else if(p < 16){
+				var w3 = 24 - w2;
+				document.getElementById("bat-lev").style.width = w3 + "px";
+				document.getElementById("bat-lev").style.float = "right";
+				document.getElementById("bat-lev").style.background = "var(--scol222)";
+				document.getElementById("bat-main").style.background = "var(--scol11)";
+				if(w3 === 20){
+					document.getElementById("bat-lev").style.borderRadius = "2px 7px 7px 2px";
+				}
+				else if(w3 === 21){
+					document.getElementById("bat-lev").style.borderRadius = "4px 7px 7px 4px";
+				}
+				else if(w3 === 22){
+					document.getElementById("bat-lev").style.borderRadius = "5px 7px 7px 5px";
+				}
+				else if(w3 === 23){
+					document.getElementById("bat-lev").style.borderRadius = "6px 7px 7px 6px";
+				}
+				else if(w3 === 24){
+					document.getElementById("bat-lev").style.borderRadius = "7px";
+				}
+				else{
+					document.getElementById("bat-lev").style.borderRadius = "0px 7px 7px 0px";
+				}
+		}
+		else{
+				var w3 = 24 - w2;
+				document.getElementById("bat-lev").style.width = w3 + "px";
+				document.getElementById("bat-lev").style.float = "right";
+				document.getElementById("bat-lev").style.background = "var(--scol22)";
+				document.getElementById("bat-main").style.background = "var(--scol1)";
+				if(w3 === 20){
+					document.getElementById("bat-lev").style.borderRadius = "2px 7px 7px 2px";
+				}
+				else if(w3 === 21){
+					document.getElementById("bat-lev").style.borderRadius = "4px 7px 7px 4px";
+				}
+				else if(w3 === 22){
+					document.getElementById("bat-lev").style.borderRadius = "5px 7px 7px 5px";
+				}
+				else if(w3 === 23){
+					document.getElementById("bat-lev").style.borderRadius = "6px 7px 7px 6px";
+				}
+				else if(w3 === 24){
+					document.getElementById("bat-lev").style.borderRadius = "7px";
+				}
+				else{
+					document.getElementById("bat-lev").style.borderRadius = "0px 7px 7px 0px";
+				}
+		}
+	})
+	document.getElementById("bat-txt").innerHTML = Math.round((battery.level*100));
+		var p = (battery.level*100);
+		var p2 = (battery.level*100)/100;
+		var w = p2*24;
+		var w2 = Math.round(w);
+		if(p > 22){
+				document.getElementById("bat-lev").style.width = w2 + "px";
+				document.getElementById("bat-lev").style.float = "left";
+				document.getElementById("bat-lev").style.background = "var(--scol1)";
+				document.getElementById("bat-main").style.background = "var(--scol2)";
+				
+			if(w2 === 20){
+				document.getElementById("bat-lev").style.borderRadius = "7px 2px 2px 7px";
+			}
+			else if(w2 === 21){
+				document.getElementById("bat-lev").style.borderRadius = "7px 4px 4px 7px";
+			}
+			else if(w2 === 22){
+				document.getElementById("bat-lev").style.borderRadius = "7px 5px 5px 7px";
+			}
+			else if(w2 === 23){
+				document.getElementById("bat-lev").style.borderRadius = "7px 6px 6px 7px";
+			}
+			else if(w2 === 24){
+				document.getElementById("bat-lev").style.borderRadius = "7px";
+			}
+			else{
+				document.getElementById("bat-lev").style.borderRadius = "7px 0 0 7px";
+			}
+		}
+		else if(p < 16){
+				var w3 = 24 - w2;
+				document.getElementById("bat-lev").style.width = w3 + "px";
+				document.getElementById("bat-lev").style.float = "right";
+				document.getElementById("bat-lev").style.background = "var(--scol222)";
+				document.getElementById("bat-main").style.background = "var(--scol11)";
+				if(w3 === 20){
+					document.getElementById("bat-lev").style.borderRadius = "2px 7px 7px 2px";
+				}
+				else if(w3 === 21){
+					document.getElementById("bat-lev").style.borderRadius = "4px 7px 7px 4px";
+				}
+				else if(w3 === 22){
+					document.getElementById("bat-lev").style.borderRadius = "5px 7px 7px 5px";
+				}
+				else if(w3 === 23){
+					document.getElementById("bat-lev").style.borderRadius = "6px 7px 7px 6px";
+				}
+				else if(w3 === 24){
+					document.getElementById("bat-lev").style.borderRadius = "7px";
+				}
+				else{
+					document.getElementById("bat-lev").style.borderRadius = "0px 7px 7px 0px";
+				}
+		}
+		else{
+				var w3 = 24 - w2;
+				document.getElementById("bat-lev").style.width = w3 + "px";
+				document.getElementById("bat-lev").style.float = "right";
+				document.getElementById("bat-lev").style.background = "var(--scol22)";
+				document.getElementById("bat-main").style.background = "var(--scol1)";
+				if(w3 === 20){
+					document.getElementById("bat-lev").style.borderRadius = "2px 7px 7px 2px";
+				}
+				else if(w3 === 21){
+					document.getElementById("bat-lev").style.borderRadius = "4px 7px 7px 4px";
+				}
+				else if(w3 === 22){
+					document.getElementById("bat-lev").style.borderRadius = "5px 7px 7px 5px";
+				}
+				else if(w3 === 23){
+					document.getElementById("bat-lev").style.borderRadius = "6px 7px 7px 6px";
+				}
+				else if(w3 === 24){
+					document.getElementById("bat-lev").style.borderRadius = "7px";
+				}
+				else{
+					document.getElementById("bat-lev").style.borderRadius = "0px 7px 7px 0px";
+				}
+		}
+	//document.write((battery.level*100)+"%");
+	});
+}
+</script>
+
+<div id="devmode">
+<img src="https://chanpreetsingh16.github.io/ONLINE/dev.png">
+<font>Opened in Developer Mode</font>
+</div>
+
+<div id="devwarn">
+<button onclick="dev()" style="height:50px; width:50px; float:left; border:none; outline:none; background:#fff;"></button>	
+<div id="div">
+<center><i class="material-symbols-outlined">warning</i></center><br><br>
+<font>Device not Supported!</font>
+</div>
+</div>
+
+
+<div id="container">
+<div id="status-bar">
+<font id="span"></font>
+<span id="bat-main"><span id="bat-lev"></span><span id="bat-txt">15</span></span>
+<i class="material-symbols-outlined">signal_cellular_alt</i>
+<i class="material-symbols-outlined">wifi</i>
+</div>
+
+
+</div>
+
+<script>
+document.onkeydown = (e) => {
+	if(e.shiftKey && e.ctrlKey && e.key == "%") {
+		e.preventDefault();		
+		dev();
+	}
+	else{}
+}
+function apps() {
+	if(document.getElementById("appdrawer").style.display === "none") {
+		document.getElementById("appdrawer").style.display = "block";
+		document.getElementById("nbt3").style.background = "#fff";
+		document.getElementById("nbt3i").style.color = "#oeoe11";
+	}
+	else{
+		document.getElementById("appdrawer").style.display = "none";
+		document.getElementById("nbt3").style.background = "var(--db)";
+		document.getElementById("nbt3i").style.color = "#aaa";
+	}
+}
+var span = document.getElementById('span');
+	var span0 = document.getElementById('spano');
+	
+	function time() {
+		var d = new Date();
+		var m = d.getMinutes();
+		var h = d.getHours();
+		var t = d.getDate();
+		var y = d.getMonth()+1;
+		var x = d.getFullYear();
+		
+		if (h > 12) {
+        h -= 12;
+		
+    } else if (h === 0) {
+        h = 12;
+    }
+		span.textContent = ("" + h).substr(-2) + ":" + ("0" + m).substr(-2);
+		//spano.textContent = ("0" + t).substr(-2) + "/" + ("0" + y).substr(-2) + "/" + ("0" + x).substr(-4);
+		}
+		
+		
+		setInterval(time, 1000);
+</script>
+<div id="appdrawer"></div>
+</body>
+<style>
+/*html#43889e*/
+:root{
+	--b1:#0e0e11;
+	--color:#fff;
+	--colordev:#000;
+	--db:rgba(255,255,255,.2);
+	--devis:#52527a;
+	--devborder:#666;
+	--scol1:#fff;
+	--scol11:#f33;
+	--scol2:rgba(255,255,255,.45);
+	--scol22:rgba(0,0,0,.49);
+	--scol222:#999;
+	--scol3:#333;
+}
+.slit{
+	--scol1:#333;
+	--scol11:#f33;
+	--scol2:rgba(0,0,0,.45);
+	--scol22:rgba(255,255,255,.49);
+	--scol222:#999;
+	--scol3:#fff;
+}
+.light{
+	--b1:#fff;
+	--color:#000;
+	--colordev:#fff;
+	--db:rgba(0,0,0,.5);
+	--devis:#3d3d5c;
+	--devborder:#a6a6a6;
+}
+body{
+	background:var(--b1);
+	color:var(--color);
+	font-family:quicksand;
+}
+*{
+	cursor:context-menu;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+*::selection{
+	color:#fff;
+	background:rgba(0,0,0,.3);
+}
+#devwarn{
+	display:none;
+	z-index:100;
+	position:fixed;
+	top:0;
+	left:0;
+	/*border:1px solid#fff;*/
+	height:100%;
+	width:100%;
+	background:#fff;
+}
+#devwarn #div{
+	position:fixed;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	color:#000;
+	font-size:17px;
+	font-weight:650;
+}
+#devwarn i{
+	color:#f33;
+	font-variation-settings: 'FILL' 1;
+	font-size:100px;
+}
+#devmode{
+	position:fixed;
+	left:50%;
+	bottom:20px;
+	transform:translate(-50%, 0);
+	display:none;
+	background:linear-gradient(to right, rgba(45, 45, 134, .7), var(--db));
+	backdrop-filter:blur(20px);
+	padding:10px;
+	line-height:30px;
+	border-radius:40px;
+	color:var(--colordev);
+	width:254px;
+	font-weight:550;	
+	animation-name:devan;
+	animation-duration:0.6s;
+	animation-iteration-count:1;
+	animation-timming-function:liner;
+	border:1px solid var(--devborder)/*rgba(133, 133, 173, 1)*/;
+	z-index:99;
+	height:30px;
+}
+@keyframes devan{
+	0%{bottom:-50px; transform:translate(-50%,0) scale(0); left:50%;}
+	/*50%{bottom:23px; transform:translate(-50%,0) scale(1); left:50%;}*/
+	100%{bottom:20px; transform:translate(-50%,0) scale(1); left:50%;}
+}
+#devmode font{
+	float:left;
+	margin-left:10px;
+}
+#devmode img{
+	float:left;
+	height:30px;
+	width:30px;
+	margin:0 0 0 0;
+	/*filter:drop-shadow(0 0 2px var(--devis));*/
+}
+#container{
+	position:fixed;
+	top:0;
+	left:0;
+	/*border:1px solid#fff;*/
+	height:100%;
+	width:100%;
+	z-index:-10;
+	background:url(https://chanpreetsingh16.github.io/ONLINE/1.webp);
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:fixed;
+	/*filter:blur(3px);*/
+}
+#status-bar{
+	height:18px;
+	width:100%;
+	padding-bottom:4px;
+}
+#status-bar font{
+	font-weight:520;
+	font-size:13px;
+	color:var(--scol1);
+	line-height:18px;
+	margin-left:20px;
+}
+#status-bar i{
+	font-size:13px;
+	float:right;
+	line-height:23px;
+	margin-right:2px;
+	color:var(--scol1);
+	font-variation-settings:'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+}
+#bat-main{
+	float:right;
+	height:14px;
+	width:24px;
+	border-radius:7px;
+	background:var(--scol11);
+	margin:4px 20px 0 0;
+}
+/*#bat-lev{
+	float:left;
+	height:14px;
+	width:21px;
+	margin:0px 0 0 0px;
+	background:var(--scol1);
+	z-index:-1;
+	border-radius:7px 3px 3px 7px;
+}*/
+#bat-lev{
+	float:right;
+	height:14px;
+	width:20px;
+	margin:0px 0 0 0px;
+	background:var(--scol222);
+	z-index:-1;
+	border-radius:2px 7px 7px 2px;
+}
+#bat-txt{
+	font-size:11px;
+	position:fixed;
+	line-height:20px;
+	top:1px;
+	right:18px;
+	color:var(--scol3);
+	font-weight:700;
+	width:26px;
+	text-align:center;
+}
+/*icons*/
+/* fallback */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  src: url(woff2.woff2) format('woff2');
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+</html>
+<!--
+navigator.getBattery().then(function(battery) {
+  battery.addEventListener('levelchange', function() {    
+    // Do stuff when the level changes, you can get it
+    // from battery.level
+    document.write((battery.level*100)+"%");
+  })
+  document.write((battery.level*100)+"%");
+});
+
+let touchstartY = 0
+let touchendY = 0
+    
+function checkDirection() {
+var a = touchstartY - touchendY;
+var b = touchendY - touchstartY;
+  if (touchendY < touchstartY) alert('swiped up!' + a)
+  if ((touchendY - 100) > touchstartY) alert('swiped down!' + b)
+}
+
+document.addEventListener('touchstart', e => {
+  touchstartY = e.changedTouches[0].screenY
+})
+
+document.addEventListener('touchend', e => {
+  touchendY = e.changedTouches[0].screenY
+  checkDirection()
+})
+-->
