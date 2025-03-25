@@ -1,0 +1,632 @@
+<!doctype html>
+<html>
+<head>
+<title>ONLINE Store</title>
+<!--<link rel="stylesheet" href="ononcss.css">-->
+<link rel="icon" href="https://chanpreetsingh16.github.io/ONLINE/ononlogo1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Quicksand:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+</head>
+<body onload="preset()">
+<script src="https://chanpreetsingh16.github.io/C.C22web/ONTJS.js"></script>
+<div class="nav" id="navbar">
+<font>ONLINE Store</font>
+<script>
+window.addEventListener('resize', rewidth);
+function rewidth() {
+	document.getElementById("menudrawer").style.display = "none";
+	document.getElementById("menu").innerHTML = "menu";	
+}
+</script>
+<script>
+document.addEventListener("contextmenu", stopmenu);
+function stopmenu() {
+	event.preventDefault();
+}
+</script>
+<button id="navbt3" onclick="opburgmenu()"><i class="material-symbols-outlined" id="menu">menu</i></button>
+<button id="navbt1" onclick="theme()" title="Change Theme"><i class="material-symbols-outlined" id="theme-i">dark_mode</i></button>
+<button id="navbt1" onclick="opFeed()" title="Give Us Feedback"><i class="material-symbols-outlined">star</i></button>
+<button id="navbt1" onclick="opHelp()" title="Client Services"><i class="material-symbols-outlined">support_agent</i></button>
+<button id="navbt2" onclick="opdrdnlst1()"><i class="material-symbols-outlined">person</i><i id="drpdnlst1i" class="material-symbols-outlined">keyboard_arrow_down</i></button>
+<button id="navbt1" onclick="opEvents()" title="ONLINE Events"><i class="material-symbols-outlined">event</i></button>
+<!--<button id="navbt1" onclick="op()" title="ONLINE Events"><i class="material-symbols-outlined">event</i></button>-->
+
+<div id="drpdn1">
+<script>
+document.getElementById("drpdn1").style.display = "none";
+function opdrdnlst1() {
+	if(document.getElementById("drpdn1").style.display === "none") {
+		document.getElementById("drpdn1").style.display = "block";
+		document.getElementById("drpdnlst1i").style.transform = "rotate(180deg)";
+		document.getElementById("drpdnlst1i").style.animationName = "rotatei180";
+		document.getElementById("events").style.zIndex = "-1";
+	}
+	else{
+		document.getElementById("drpdn1").style.display = "none";
+		document.getElementById("drpdnlst1i").style.transform = "rotate(0deg)";
+		document.getElementById("drpdnlst1i").style.animationName = "rotatei0";
+		document.getElementById("events").style.zIndex = "10";
+	}
+}
+function theme() {
+	document.body.classList.toggle("light");
+	
+	if(document.body.classList.contains("light")) {
+		document.getElementById("theme-i").innerHTML = "light_mode";
+		document.getElementById("theme-i2").innerHTML = "light_mode";
+		document.getElementById("theme-txt").innerHTML = "Light Theme";
+		localStorage.setItem("onsttheme", "light");
+	}
+	else{
+		document.getElementById("theme-i").innerHTML = "dark_mode";
+		document.getElementById("theme-i2").innerHTML = "dark_mode";
+		document.getElementById("theme-txt").innerHTML = "Dark Theme";
+		localStorage.removeItem("onsttheme");
+	}
+}
+function preset() {
+	load();
+	if(localStorage.getItem("onsttheme") === "light") {
+		document.body.classList.toggle("light");
+		document.getElementById("theme-i").innerHTML = "light_mode";
+		document.getElementById("theme-i2").innerHTML = "light_mode";
+		document.getElementById("theme-txt").innerHTML = "Light Theme";
+	}
+	else{}
+}
+function load() {
+	notifycate();
+}
+function opburgmenu() {
+	if(document.getElementById("menudrawer").style.display === "none") {
+		document.getElementById("menu").innerHTML = "close";
+		document.getElementById("menudrawer").style.display = "block";
+	}
+	else{
+		document.getElementById("menu").innerHTML = "menu";
+		document.getElementById("menudrawer").style.display = "none";
+	}
+}
+</script>
+<div id="child11" onclick="opCrtUId()"><i class="material-symbols-outlined">person_add</i><font>Create User ID</font></div><br>
+<div id="child11" onclick="opCheckUId()"><i class="material-symbols-outlined">mark_email_unread</i><font>Check User Id Messages</font></div>
+</div>
+</div>
+
+<div id="menudrawer" style="display:none;">
+<div id="child12" onclick="theme()"><i class="material-symbols-outlined" id="theme-i2">dark_mode</i><font id="theme-txt">Dark Theme</font></div><br>
+<div id="child12" onclick="opEvents()"><i class="material-symbols-outlined">event</i><font>ONLINE Events</font></div>
+<div id="child12" onclick="opCrtUId()"><i class="material-symbols-outlined">person_add</i><font>Create User ID</font></div>
+<div id="child12" onclick="opCheckUId()"><i class="material-symbols-outlined">mark_email_unread</i><font>Check User Id Messages</font></div>
+<div id="child12" onclick="opFeed()"><i class="material-symbols-outlined">star</i><font>Give Us Feedback</font></div>
+<div id="child12" onclick="opHelp()"><i class="material-symbols-outlined">support_agent</i><font>Client Services</font></div>
+</div>
+
+<div id="events">
+<font id="entxt">ONLINE Events</font>
+<button onclick="clontevent()" id="closeoneve"><div>&times;</div></button>
+<div id="onweventmain" onclick="closeall()">
+<div>Nothing to show</div>
+</div>
+<script>
+function opEvents() {
+	document.getElementById("events").style.display = "block";
+	document.getElementById("menudrawer").style.display = "none";
+	document.getElementById("menu").innerHTML = "menu";
+	
+	if(document.getElementById("drpdn1").style.display === "block") {
+		document.getElementById("drpdn1").style.display = "none";
+		document.getElementById("drpdnlst1i").style.transform = "rotate(0deg)";
+		document.getElementById("drpdnlst1i").style.animationName = "rotatei0";
+	}
+	else{}
+}
+function clontevent() {
+	document.getElementById("events").style.display = "none";
+	document.getElementById("menudrawer").style.display = "none";
+	document.getElementById("menu").innerHTML = "menu";
+	
+	if(document.getElementById("drpdn1").style.display === "block") {
+		document.getElementById("drpdn1").style.display = "none";
+		document.getElementById("drpdnlst1i").style.transform = "rotate(0deg)";
+		document.getElementById("drpdnlst1i").style.animationName = "rotatei0";
+	}
+	else{}
+}
+</script>
+</div>
+
+<!--imaggallery-->
+<div id="imgmain">
+<button class="imggalnavbat" id="button-back-img" onclick="imgPre()"><i class="material-symbols-outlined">arrow_back_ios_new</i></button>
+<img src="https://i.ytimg.com/vi/p0jn2BgORAw/hqdefault.jpg?sqp=-oaymwFACKgBEF5IWvKriqkDMwgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAHwAQH4Af4JgALQBYoCDAgAEAEYEyAlKH8wDw==&rs=AOn4CLAX_l-SP0I2DQGSt3NaGShn9OqYpg" id="imggalimg" alt="image">
+<button class="imggalnavbat" id="button-fore-img"  onclick="imgNex()"><i class="material-symbols-outlined">arrow_forward_ios</i></button>
+
+<script>
+var i = 0;
+const imgsrc = ["https://i.ytimg.com/vi/p0jn2BgORAw/hqdefault.jpg?sqp=-oaymwFACKgBEF5IWvKriqkDMwgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAHwAQH4Af4JgALQBYoCDAgAEAEYEyAlKH8wDw==&rs=AOn4CLAX_l-SP0I2DQGSt3NaGShn9OqYpg", 
+				"https://i.ytimg.com/vi/Oc6iprnQSA8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBRZhQD-eH2MasnAclilVkpSk2IzQ", 
+				"https://i.ytimg.com/vi/4sZCB_Noh_I/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA-C4LS8oxV8VBbN9Gi8e5yE68afg", 
+				"https://i.ytimg.com/vi/KgsA--8f01A/hqdefault.jpg?sqp=-oaymwFACKgBEF5IWvKriqkDMwgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAHwAQH4AdQGgALgA4oCDAgAEAEYciBMKD4wDw==&rs=AOn4CLCObVvOdCH6ILFcDo4O9Jv4pKs-Aw"];
+
+function imgNex() {
+  i = i + 1;
+  if (i >= imgsrc.length) {
+    i = 0;
+  }
+  document.getElementById("imggalimg").src = imgsrc[i];
+}
+
+function imgPre() {
+  i = i - 1; 
+  if (i < 0) { 
+    i = imgsrc.length - 1; 
+  }
+  document.getElementById("imggalimg").src = imgsrc[i];
+}
+setInterval(imgNex, 20000);
+</script>
+</div>
+
+
+<div class="cardparent">
+<div class="cards" id="card1"><div id="cardc1" class="cardschilds"></div></div>
+<div class="cards" id="card2"><div id="cardc2" class="cardschilds"></div></div>
+<div class="cards" id="card3"><div id="cardc3" class="cardschilds"></div></div>
+<div class="cards" id="card4"><div id="cardc4" class="cardschilds"></div></div>
+</div>
+</body>
+<style>
+:root{
+	--b1:rgb(3,3,3);
+	--b2:rgb(18,18,18);
+	--b3:rgb(40,40,40);
+	--b4:rgb(60,60,60);
+	--bo1:rgb(60,60,60);
+	--br1:rgba(0,0,0,.5);
+	--c1:#fff;
+	--s1:#000;
+}
+.light{
+	--b1:rgb(230,230,230);
+	--b2:rgb(205,205,205);
+	--b3:rgb(183,183,183);
+	--b4:rgb(163,163,163);
+	--bo1:rgb(120,120,120);
+	--br1:rgba(255,255,255,.5);
+	--c1:#000;
+	--s1:#000;
+}
+body{
+	background:var(--b1);
+}
+*{
+	font-family:quicksand;
+	cursor:context-menu;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline:none;
+}
+*::selection{
+	color:#fff;
+	background:rgba(0,0,0,.3);
+}
+.nav{
+	height:54px;
+	width:calc(100% - 20px);
+	background:var(--b2);
+	/*backdrop-filter:blur(6px);*/
+	position: fixed;
+	top:10px;
+	left:10px;
+	/*display:block;
+	transition:background 0.15s;*/
+	border-radius:27px;
+}
+.nav font{
+	color:var(--c1);
+	line-height:54px;
+	float:left;
+	margin:0 0 0 18px;
+	font-size:25px;
+	font-weight:450;
+}
+#navbt1{
+	float:right;
+	height:36px;
+	width:36px;
+	margin:9px 9px 0 0;
+	border:none;
+	outline:none;
+	border-radius:50%;
+	background:transparent;
+	color:var(--c1);
+	transition:0.2s;
+}
+#navbt1:hover{
+	background:var(--b3);
+}
+#navbt1 i{
+	font-size:24px;
+	line-height:28px;
+	font-variation-settings:'FILL' 0, 'wght' 230, 'GRAD' 0, 'opsz' 24;
+}
+#navbt2{
+	float:right;
+	height:36px;
+	width:70px;
+	margin:9px 9px 0 0;
+	border:none;
+	outline:none;
+	border-radius:18px;
+	background:var(--b3);
+	color:var(--c1);
+	transition:0.2s;
+}
+#navbt2:hover{
+	background:var(--b4);
+}
+#navbt2 i{
+	font-size:24px;
+	line-height:28px;
+	font-variation-settings:'FILL' 0, 'wght' 220, 'GRAD' 0, 'opsz' 24;
+}
+#drpdnlst1i{
+	animation-name:;
+	animation-duration:0.4s;
+	animation-timming-function:linear;
+	animation-iteration-count:1;
+}
+#drpdn1{
+	display:none;
+	position:fixed;
+	top:74px;
+	right:80px;
+	padding:0 5px 5px 5px;
+	border-radius:7px;	
+	background:var(--b2);
+	animation-name:drpdn;
+	animation-duration:0.2s;
+	animation-timming-function:linear;
+	animation-iteration-count:1;
+	z-index:15;
+}
+@keyframes drpdn{
+	0%{	top:-200px;}
+	100% {top:74px;}
+}
+@keyframes rotatei180{
+	0%{	transform:rotate(0deg);}
+	100% {transform:rotate(180deg;)}
+}
+@keyframes rotatei0{
+	0%{	transform:rotate(180deg);}
+	100% {transform:rotate(0deg);}
+}
+#child11{
+	float:left;
+	height:30px;
+	border-radius:2px;
+	margin:5px 0 0 0;
+	width:calc(100% - 14px);
+	padding:0 7px 0 7px;
+	transition:0.2s;
+}
+#child11:hover{
+	background:var(--b3);	
+}
+#child11 i{
+	float:left;
+	line-height:30px;
+	font-variation-settings:'FILL' 0, 'wght' 220, 'GRAD' 0, 'opsz' 24;
+	color:var(--c1);
+}
+#child11 font{
+	float:left;
+	line-height:30px;
+	font-weight:450;
+	color:var(--c1);
+	margin-left:10px;
+	font-size:14px;
+}
+#navbt3{
+	display:none;
+	float:right;
+	height:36px;
+	width:36px;
+	margin:9px 9px 0 0;
+	border:none;
+	outline:none;
+	border-radius:50%;
+	background:transparent;
+	color:var(--c1);
+	transition:0.2s;
+}
+#navbt3:active{
+	background:var(--b3);
+}
+#navbt3 i{
+	font-size:24px;
+	line-height:28px;
+	font-variation-settings:'FILL' 0, 'wght' 230, 'GRAD' 0, 'opsz' 24;
+}
+#menudrawer{
+	display:none;
+	z-index:11;
+	position:fixed;
+	top:74px;
+	left:0;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	overflow-y:auto;
+	background:var(--b2);
+	animation-name:come-up;
+	animation-duration:0.5s;
+	animation-iteration-count:1;
+	animation-timming-function:linear;
+	border-radius:10px 10px 0 0;
+}
+#child12{
+	float:left;
+	width:calc(100% - 10px);
+	margin:5px 0 0 5px;
+	height:40px;
+	border-radius:5px;
+	color:var(--c1);
+	transition:0.2s;
+}
+#child12:active{
+	background:var(--b3);
+}
+#child12 i{
+	float:left;
+	line-height:40px;
+	margin-left:7px;
+	font-size:20px;
+	font-variation-settings:'FILL' 0, 'wght' 230, 'GRAD' 0, 'opsz' 24;
+}
+#child12 font{
+	float:left;
+	line-height:40px;
+	font-weight:450;
+	margin-left:10px;
+	font-size:14px;
+}
+@keyframes come-up{
+	0%{top:100%;}
+	100%{top:74px;}
+}
+/*online eve*/
+#events{
+	display:none;
+	height:calc(100% - 84px);
+	width:300px;
+	position:fixed;
+	top:74px;
+	right:10px;
+	background:var(--b2);
+	border-radius:5px;
+	animation-name:ltrbar;
+	animation-duration:0.3s;
+	animation-iteration-count:1;
+	animation-timming-function:linear;
+	color:var(--c1);
+}
+#entxt{
+	line-height:40px;
+	font-size:23px;
+	margin-left:10px;
+}
+#closeoneve{
+	height:30px;
+	background:transparent;
+	border:none;
+	font-size:23px;
+	transition:0.15s;
+	border:none;
+	font-weight:100;
+	width:60px;
+	border-radius:0 5px 0 0;
+	float:right;
+	color:var(--c1);
+}
+#closeoneve div{
+	transition:0.15s;
+}
+#closeoneve:hover{
+	background:#a32929;
+}
+#closeoneve:hover div{
+	color:#fff;
+}
+#closeoneve:active div{
+	transform:scale(0.8);
+	line-height:30px;
+	font-weight:300;
+	background:transparent;
+}
+@keyframes ltrbar{
+	0%{right:-300px;}
+	100%{right:10px;}
+}
+#onweventmain{
+	width:calc(100% - 20px);
+	height:calc(100% - 51px);
+	margin:0 0 0 10px;
+	overflow:hidden;
+	overflow-y:auto;
+}
+#onweventmain div{
+	float:left;
+	width:calc(100% - 20px);
+	border-radius:5px;
+	margin-bottom:10px;
+	background:var(--b3);
+	padding:10px;
+	font-weight:500;
+}
+#onweventmain div a{color:var(--c1); cursor:pointer;}
+#onweventmain div font{
+	font-size:10px;
+}
+#imgmain{
+	margin: 94px 0 0 0;
+	width: 100%;
+	aspect-ratio: 4/1;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	/*border:1px solid#fff;*/
+}
+#imggalimg{
+	width: calc(100% - 160px);
+	margin: 0px 0 0 15px;
+	float: left;
+	aspect-ratio: 4/1;
+	object-fit: contain;
+	/*border:1px solid#fff;*/
+}
+.imggalnavbat{
+	float: left;
+	height: 50px;
+	width: 50px;
+	margin: 0% 0 0 15px;
+	border:none;
+	outline:none;
+	border-radius:50%;
+	background:var(--b2);
+	color:var(--c1);
+	transition:0.2s;
+	text-align:center;
+}
+#button-fore-img{
+	margin-left:15px;
+}
+.imggalnavbat i{
+	line-height:40px;
+	font-size:20px;
+	font-variation-settings:'FILL' 0, 'wght' 230, 'GRAD' 0, 'opsz' 24;	
+}
+.imggalnavbat:active{
+	background:var(--b3);
+}
+.cardparent{
+	/*border:1px solid#fff;*/
+	width:calc(100% - 80px);
+	margin-top:50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-between;
+	padding:0 40px 50px 40px;
+}
+.cards{
+	background:var(--b1);
+	height:500px;
+	width:400px;
+	border:1px solid var(--bo1);
+	margin-top:50px;
+	border-radius:25px;
+	transition:0.2s;
+}
+.cards:hover{
+	background:linear-gradient(135deg, #efa6ff/*#f2d0fa*/, /*#cce6fe*/#99ceff);
+	border-color:var(--b1);
+}
+.cardschilds{
+	width:calc(100% - 20px);
+	height:calc(100% - 20px);
+	background:var(--b1);
+	margin:10px 0 0 10px;
+	border-radius:15px;
+}
+.cards:hover .cardschilds{
+	background:var(--br1);
+}
+
+
+
+
+::-webkit-scrollbar{
+	width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track{
+	background:var(--b1);
+}
+::-webkit-scrollbar-thumb{
+	background: rgba(102, 102, 102,.8); 
+	border-radius:4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 51, 51,.8);
+}
+@media only screen and (max-width:915px){
+	.cards{
+		height:500px;
+		width:100%;
+	}	
+}
+@media only screen and (max-width:500px){
+	#navbt1, #navbt2{
+		display:none;
+	}
+	#navbt3{
+		display:block;
+	}
+	#menudrawer{
+		display:none;
+	}
+	#events{
+		width:calc(100% - 20px);
+	}	
+	#imgmain{
+		margin: 134px 0 0 0;
+		width: 100%;
+		aspect-ratio: 2.5/1;
+	}
+	#imggalimg{
+		width: calc(100% - 0px);
+		margin: 0px 0 0 0px;
+		float: left;
+		aspect-ratio:2.5/1;
+		object-fit: contain;
+	}
+	.imggalnavbat{
+		position:absolute;
+		top:94px;
+		transform:translate(-50%, 0);
+		height: 30px;
+		width: 30px;
+		border:none;
+		outline:none;
+		border-radius:50%;
+		background:var(--b2);
+		color:var(--c1);
+		transition:0.2s;
+		text-align:center;
+	}
+	.imggalnavbat i{
+		line-height:25px;
+		font-size:17px;
+		font-variation-settings:'FILL' 0, 'wght' 230, 'GRAD' 0, 'opsz' 24;	
+	}
+	#button-fore-img{
+		right:calc(50% - 50px);
+	}
+	#button-back-img{
+		left:calc(50% - 35px);		
+	}
+}
+</style>
+</html>
