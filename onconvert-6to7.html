@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<title>ONLINE Converter | Type6 to Type7</title>
+<link rel="icon" href="https://chanpreetsingh16.github.io/ONLINE/ononlogo1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Farro:wght@300;400;500;700&family=Quicksand:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+</head>
+<body onload="preset()">
+<script src="https://chanpreetsingh16.github.io/C.C22web/ONTJS.js"></script>
+<div class="nav" id="navbar">
+<font>ONLINE Converter <font id="typefont">Type6&nbsp; &rarr; &nbsp;Type7</font></font>
+<script>
+function preset() {
+	if(localStorage.getItem("onsttheme") === "light") {
+		document.body.classList.toggle("light");
+	}
+	else{}
+	getLatestType();
+}
+function convert(){
+	document.getElementById("imptextbase").innerHTML = document.getElementById("type6").value;
+	document.getElementById("imptextbase").innerHTML = document.getElementById("imptextbase").innerHTML.replace(new RegExp('</button></a><a', "g"), document.getElementById("btenter").innerHTML + '</button></a>' + document.getElementById("btenter").innerHTML + document.getElementById("btenter").innerHTML + '<a');
+	document.getElementById("imptextbase").innerHTML = document.getElementById("imptextbase").innerHTML.replace(new RegExp('><button id=""', "g"), '>' + document.getElementById("btenter").innerHTML + '<button id="sbt"');
+	
+	
+	if(document.getElementById("imptextbase").innerHTML.includes('<div id="webScore">7</div>') && document.getElementById("webScore").textContent === "7"){
+		alert("This Import Text is already Type7");
+		document.getElementById("imptextbase").innerHTML = "";
+	}
+	else if(document.getElementById("imptextbase").innerHTML.includes('<div id="webScore">') && document.getElementById("webScore").textContent > 6){
+		alert("This Import Text is already Above Type6");
+		document.getElementById("imptextbase").innerHTML = "";
+	}
+	else if(document.getElementById("imptextbase").innerHTML.includes('<div id="usern">')){
+		document.getElementById("type7").value = '<div id="webScore">7</div><div id="usern2">' + document.getElementById("usern").textContent + '</div><div id="loscheck2">'
+		+ document.getElementById("loscheck").textContent + '</div><div id="userid2">' + document.getElementById("userid").textContent + '</div><div id="ontshortbt2">'
+		+ document.getElementById("ontshortbt").innerHTML + '</div><div id="ontnote2">'
+		+ document.getElementById("ontnote").innerHTML + '</div><div id="userpp2">'
+		+ document.getElementById("userpp").innerHTML + '</div><div id="wallo2">' + document.getElementById("wallo").innerHTML + '</div><div id="theme12">' + document.getElementById("theme1").textContent + '</div><div id="ontcalcresult2">'
+		+ document.getElementById("ontcalcresult").textContent + '</div><div id="tasp2">' + document.getElementById("tasp").textContent + '</div><div id="webuss"></div><div id="webus"></div>';
+		document.getElementById("imptextbase").innerHTML = "";
+	}
+	else{
+		alert("Coniguration Error!");
+		document.getElementById("imptextbase").innerHTML = "";
+	}
+}
+</script>
+</div>
+<div id="typediv1">Latest Type: <font id="typediv" style="color:var(--c1);"></font></div>
+<br><br><br><br><br><br><br>
+<textarea spellcheck="false" id="type6" placeholder="Enter your Type6 Import Text."></textarea>
+<textarea spellcheck="false" id="type7" placeholder="Your Converted Type7 Import Text will appear here!"></textarea>
+<br><br>
+<button onclick="convert()">Convert ></button>
+<div id="imptextbase" style="display:none;"></div>
+<div id="btenter" style="display:none;">
+</div>
+<div style="width:100%; height:50px; float:left;"></div>
+<div id="stamp" style=" color:var(--c1);">
+
+&#169;ONLINE2023 ; IMAGES & CONTENT MAY BE SUBJECT TO COPYRIGHT.<br>
+WEBSITE CODED ON - 02:05 pm Saturday, 05 April 2025 (IST). </div>
+
+</div>
+</body>
+<style>
+:root{
+	--b1:rgb(3,3,3);
+	--b2:rgb(18,18,18);
+	--b3:rgb(40,40,40);
+	--b4:rgb(60,60,60);
+	--bo1:rgb(60,60,60);
+	--br1:rgba(0,0,0,.5);
+	--c1:#fff;
+	--s1:#000;
+}
+.light{
+	--b1:rgb(230,230,230);
+	--b2:rgb(205,205,205);
+	--b3:rgb(183,183,183);
+	--b4:rgb(163,163,163);
+	--bo1:rgb(120,120,120);
+	--br1:rgba(255,255,255,.5);
+	--c1:#000;
+	--s1:#000;
+}
+body{
+	background:var(--b1);
+}
+*{
+	font-family:quicksand;
+	cursor:context-menu;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline:none;
+}
+*::selection{
+	color:#fff;
+	background:rgba(0,0,0,.3);
+}
+.nav{
+	height:54px;
+	width:250px;
+	background:var(--b2);
+	/*backdrop-filter:blur(6px);*/
+	position: fixed;
+	top:10px;
+	left:10px;
+	/*display:block;
+	transition:background 0.15s;*/
+	border-radius:27px;
+}
+.nav font{
+	color:var(--c1);
+	line-height:54px;
+	float:left;
+	margin:0 0 0 18px;
+	font-size:25px;
+	font-weight:450;
+}
+#typefont{
+	color:var(--c1);
+	line-height:54px;
+	float:none;
+	margin:0 0 0 0;
+	font-size:25px;
+	font-weight:450;
+	position:fixed;
+	top:; 
+	left:50%; 
+	transform:translate(-50%, 0);
+}
+#typediv1{
+	float:left;
+	color:var(--c1);
+	line-height:54px;
+	margin:70px 0 0 5px;
+	font-size:17px;
+	font-weight:450;
+	text-align:left;
+}
+textarea{
+	width:calc(100% - 20px);
+	height:200px;
+	float:left;
+	margin:15px 0 0 5px;
+	resize:none;
+	outline:none;
+	cursor:text;
+	background:#000;
+	border:1px solid var(--bo1);
+	border-radius:25px;
+	text-indent:15px;
+	line-height:25px;
+	font-size:13px;
+	font-family:space mono;
+	caret-color:#fff;
+}
+textarea::selection{
+	background:rgba(255,255,255,.3);
+}
+#type6{
+	color:#f63;
+}
+#type7{
+	color:#3cc;
+}
+button{
+	width:calc(100% - 15px);
+	float:left;
+	margin:20px 0 0 5px; 
+	height:30px;
+	border:none;
+	outline:none;
+	border-radius:15px;
+	background:var(--b2);
+	color:var(--c1);
+	transition:0.2s;
+	font-size:16px;
+}
+button:hover{
+	background:var(--b3);
+}
+button:active{
+	background:var(--b4);
+}
+::-webkit-scrollbar{
+	width: 0px;
+    height: 0px;
+}
+::-webkit-scrollbar-track{
+	background:var(--b1);
+}
+::-webkit-scrollbar-thumb{
+	background: rgba(102, 102, 102,.8); 
+	border-radius:4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 51, 51,.8);
+}
+@media only screen and (max-width:915px){
+	
+}
+@media only screen and (max-width:740px){	
+	#typefont{
+		position:fixed;
+		top:; 
+		right:15px;
+		transform:translate(0%, 0);
+		text-align:right;
+	}
+}
+@media only screen and (max-width:500px){	
+	.nav{
+		width:calc(100% - 20px);
+	}
+	#typefont{
+		position:fixed;
+		top:70px; 
+		left:50%;
+		transform:translate(-50%, 0);
+		width:calc(100% - 20px);
+		text-align:center;
+	}
+	#typediv1{
+		margin-top:120px;
+		text-align:center;
+		width:calc(100% - 20px);
+	}
+}
+</style>
+</html>
