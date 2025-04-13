@@ -253,6 +253,41 @@ function batload(){
 <i class="material-symbols-outlined">wifi</i>
 </div>
 
+<div id="swipe" touchstart="ststart()" touchend="stend()">
+<script>
+function appop() {
+var t = touchendY - touchstartY;
+var s = touchstartY;
+var e = touchendY;
+	alert("op" + t + "   " + s + "   " + e);
+}
+function appcl() {
+	var t = touchendY - touchstartY;
+var s = touchstartY;
+var e = touchendY;
+	alert("cl" + t + "   " + s + "   " + e);
+}
+    
+function checkDirection() {
+  if ((touchendY - touchstartY) > 20){
+	appop();
+  }
+  else if ((touchstartY - touchendY) > 20){
+	appcl();
+  } 
+  else{}
+}
+
+document.getElementById("swipe").addEventListener('touchstart', e => {
+  touchstartY = e.changedTouches[0].screenY
+})
+
+document.getElementById("swipe").addEventListener('touchend', e => {
+  touchendY = e.changedTouches[0].screenY
+  checkDirection()
+})
+</script>
+</div>
 
 </div>
 
